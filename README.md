@@ -147,15 +147,16 @@ popup.js         全部逻辑：取字幕 → 切片 → 提示词 → 提交后
 docs/            界面截图 + 联系方式二维码
 ```
 
-## 联系与赞赏
+## 联系
 
-这个扩展是我自己上网课时做的工具，判断逻辑一直在调。
-如果你发现有什么问题，哪些部分需要优化，随时欢迎联系我。
+这个扩展是我自己上网课时做的工具，判断逻辑一直在调。如果你发现有什么问题、哪些部分需要优化，随时欢迎联系我。
 
-| 个人微信 | 赞赏码 |
-|:---:|:---:|
-| <img src="docs/wechat-qr.jpg" width="230" alt="个人微信二维码"> | <img src="docs/reward-qr.jpg" width="230" alt="赞赏码"> |
+<p align="center">
+  <img src="docs/wechat-qr.jpg" width="240" alt="个人微信二维码">
+</p>
 
+也可以在 [GitHub Issues](https://github.com/viphzz/BiliTriage/issues) 提，我会看。
+扩展里的「**关于我们**」标签页也有这个码，不用回这里找。
 
 ## 更新日志
 
