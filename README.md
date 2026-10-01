@@ -24,14 +24,14 @@
 
 ---
 
-## 安装（30 秒）
+## 如何安装
 
-**方式一：下载 zip（推荐给不想折腾的人）**
+**下载 zip**
 
 去 [**Releases**](https://github.com/viphzz/BiliTriage/releases) 下载最新版 `BiliTriage-v*.zip`，
 解压到一个**路径不含中文**的目录，然后按下面的方式二加载。
 
-**方式二：从源码加载**
+**导入插件**
 
 1. 打开 `chrome://extensions/`（Edge 是 `edge://extensions/`）
 2. 右上角打开 **开发者模式**
