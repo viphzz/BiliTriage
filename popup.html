@@ -170,9 +170,9 @@ textarea:focus{outline:none;border-color:var(--blue);background:#fff}
 /* ---------- 关于我们 ---------- */
 .lead{font-size:12.5px;color:var(--ink2);line-height:1.85}
 .lead b{color:var(--ink);font-weight:600}
-.qrs{display:flex;justify-content:center;margin-top:22px}
+.qrs{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;align-items:start}
 .qr{text-align:center}
-.qr img{width:100%;max-width:224px;aspect-ratio:1;object-fit:cover;border-radius:16px;border:1px solid var(--line);background:#fff;display:block;margin:0 auto}
+.qr img{width:100%;max-width:200px;aspect-ratio:1;object-fit:cover;border-radius:16px;border:1px solid var(--line);background:#fff;display:block;margin:0 auto}
 .qr .ql{font-size:13px;font-weight:500;margin-top:12px}
 .links{display:flex;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap;align-items:center}
 .sig{display:flex;align-items:center;gap:11px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
@@ -300,6 +300,10 @@ textarea:focus{outline:none;border-color:var(--blue);background:#fff}
       <div class="qr">
         <img src="docs/wechat-qr.jpg" alt="个人微信二维码">
         <div class="ql">加我个人微信</div>
+      </div>
+      <div class="qr">
+        <img src="docs/reward-qr.jpg" alt="赞赏码">
+        <div class="ql">赞赏码</div>
       </div>
     </div>
 
