@@ -155,9 +155,7 @@ docs/            界面截图 + 联系方式二维码
 | 个人微信 | 赞赏码 |
 |:---:|:---:|
 | <img src="docs/wechat-qr.jpg" width="230" alt="个人微信二维码"> | <img src="docs/reward-qr.jpg" width="230" alt="赞赏码"> |
-| 如果它对你有帮助 | 可以请我喝杯奶茶吗 |
 
-可以在 [GitHub Issues](https://github.com/viphzz/BiliTriage/issues) 提。
 
 ## 更新日志
 
