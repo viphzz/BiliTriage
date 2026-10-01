@@ -790,7 +790,7 @@ $("clearHist").onclick = async () => {
 
 // ---------------------------------------------------------------- 启动
 const MOCK = {
-  verdict: { one_line: "讲透「模板=代码执行入口」和「第三方组件版本就是攻击面」两条结论。", worth: "精看", reason: "真正值得投入的是 41:31–45:27 与 53:46–70:22 两段共约 21 分钟；前 41 分钟是建表、找文件的试错过程，可跳过。" },
+  verdict: { one_line: "讲透「模板=代码执行入口」和「第三方组件版本就是攻击面」两条结论。", worth: "精看", reason: "值得投入的是约 46 分钟，其中 41:31–45:27、53:46–70:22 两段是核心结论；前面建表、反复找文件的试错可以直接跳过。" },
   segments: [
     { start: 0, end: 125, topic: "开场：本节三条主线", density: "高", type: "干货", action: "精看", star: 2, note: "听完就知道全节结构" },
     { start: 125, end: 365, topic: "建表并插入测试数据", density: "低", type: "试错", action: "跳过", star: 1, note: "纯鼠标操作，无信息量" },
@@ -833,9 +833,9 @@ const MOCK = {
 
 (async function init() {
   if (!IS_EXT) {
-    $("vtitle").textContent = "《高等数学》同济版 2024年更新｜宋浩老师";
-    $("vsub").textContent = "BV1Eb411u7Fw · P26 · 85 分钟（界面预览，非真实数据）";
-    OWNER = { bvid: "BV1Eb411u7Fw", p: 26 };
+    $("vtitle").textContent = "【小迪安全】全栈网络安全｜渗透测试｜高级红蓝对抗 V2024最新版";
+    $("vsub").textContent = "BV123yAYMEwb · P26 第26天 · 85 分钟（界面预览，非真实数据）";
+    OWNER = { bvid: "BV123yAYMEwb", p: 26 };
     render(normalize(MOCK, 5104));
     showTab("overview");
     return;
