@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+:root{
+  --bg:#FAF9F6; --card:#FFFFFF;
+  --line:rgba(43,42,38,.09); --line2:rgba(43,42,38,.16);
+  --ink:#2B2A26; --ink2:#76746D; --ink3:#ABA89F;
+  --blue:#1F6FB2; --blue-l:#EAF2F9; --blue-d:#175489;
+  --amber:#B9832C; --amber-l:#FAF1DE;
+  --green:#4E7A2A; --green-l:#EFF4E4;
+  --red:#C0402F; --red-l:#FBEDEA;
+  --gray:#8A8880; --gray-l:#F1EFE9;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:600px}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--ink);font-size:13px;line-height:1.65;
+  max-height:600px;overflow-y:auto;overflow-x:hidden;
+}
+body::-webkit-scrollbar{width:9px}
+body::-webkit-scrollbar-thumb{background:rgba(43,42,38,.14);border-radius:5px;border:2px solid var(--bg)}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ---------- 顶部 ---------- */
+.head{position:sticky;top:0;z-index:30;background:rgba(250,249,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:14px 18px 0}
+.hrow{display:flex;gap:14px;align-items:flex-start}
+.hrow .l{flex:1;min-width:0}
+.head .t{font-size:15px;font-weight:600;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;letter-spacing:-.01em}
+.head .m{font-size:11px;color:var(--ink3);margin-top:4px;font-variant-numeric:tabular-nums}
+.acts{display:flex;gap:7px;flex:0 0 auto;padding-top:2px}
+.btn{font-size:12.5px;font-weight:500;padding:8px 16px;border-radius:10px;background:#fff;border:1px solid var(--line2);color:var(--ink);transition:background .15s,border-color .15s,transform .1s,box-shadow .15s;white-space:nowrap}
+.btn:hover{border-color:rgba(43,42,38,.3);box-shadow:0 1px 4px rgba(43,42,38,.08)}
+.btn:active{transform:scale(.98)}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.pri:hover{background:var(--blue-d);border-color:var(--blue-d);box-shadow:0 2px 8px rgba(31,111,178,.3)}
+.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.btn.sm{font-size:11px;padding:5px 11px;border-radius:8px}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--ink2)}
+.btn.ghost:hover{background:rgba(43,42,38,.06);box-shadow:none}
+.btn.danger{color:var(--red);border-color:rgba(192,64,47,.3)}
+.btn.danger:hover{background:var(--red-l)}
+
+/* 单行状态条 */
+.status{display:none;margin:11px 0 0;font-size:11.5px;line-height:1.5;padding:8px 12px;border-radius:10px;border:1px solid transparent;align-items:center;gap:9px}
+.status.on{display:flex}
+.status.info{background:#F5F4F1;border-color:var(--line);color:var(--ink2)}
+.status.ok{background:var(--green-l);border-color:rgba(78,122,42,.22);color:var(--green)}
+.status.err{background:var(--red-l);border-color:rgba(192,64,47,.24);color:var(--red)}
+.status span{flex:1}
+.status .lnk{font-size:11px;text-decoration:underline;color:inherit;cursor:pointer;white-space:nowrap}
+
+/* ---------- 标签栏（下划线式） ---------- */
+.tabs{position:sticky;top:0;z-index:29;display:flex;gap:20px;padding:0 18px;background:rgba(250,249,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.tabs button{font-size:13px;padding:11px 2px 9px;color:var(--ink2);position:relative;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{color:var(--blue);border-bottom-color:var(--blue);font-weight:500}
+.doterr{display:none;width:7px;height:7px;border-radius:50%;background:#E05252;margin-left:6px;vertical-align:2px}
+.doterr.on{display:inline-block}
+
+.panel{display:none;padding:16px 18px 22px}
+.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:14px}
+.card:last-child{margin-bottom:0}
+h2{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px;display:flex;align-items:baseline;gap:8px}
+h2 .c{font-weight:400;color:var(--ink3);font-size:11px}
+h2 .r{margin-left:auto;display:flex;gap:6px}
+.hint{font-size:11px;color:var(--ink3);line-height:1.65}
+.empty{font-size:12px;color:var(--ink3);padding:14px 0;line-height:1.8}
+
+/* ---------- 结论 ---------- */
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:4px 12px;border-radius:999px}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.one{font-size:15px;font-weight:600;line-height:1.6;margin-top:11px;letter-spacing:-.01em}
+.reason{font-size:12.5px;color:var(--ink2);margin-top:7px}
+.nums{display:flex;gap:0;margin:16px 0 2px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.num{flex:1;padding:11px 6px 10px;text-align:center}
+.num+.num{border-left:1px solid var(--line)}
+.num b{display:block;font-size:22px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.num span{display:block;font-size:10.5px;color:var(--ink3);margin-top:3px}
+
+/* ---------- 时间轴 ---------- */
+.tlwrap{position:relative;margin-top:18px}
+.tl{display:flex;height:52px;border-radius:12px;overflow:hidden;background:#EFECE6}
+.tl i{display:block;flex-grow:1;flex-shrink:1;flex-basis:0;min-width:1px;cursor:pointer;box-shadow:inset -1px 0 0 rgba(255,255,255,.8);transition:opacity .12s,filter .12s}
+.tl:hover i{opacity:.38}
+.tl:hover i:hover{opacity:1;filter:brightness(.88)}
+.tl i:active{filter:brightness(.7)}
+.tltip{position:absolute;top:-36px;left:0;background:#2B2A26;color:#F7F6F3;font-size:11px;padding:6px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .12s;z-index:5;font-variant-numeric:tabular-nums;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.tltip.on{opacity:1}
+.scale{display:flex;justify-content:space-between;font-size:10px;color:var(--ink3);margin-top:5px;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:11px;font-size:11px;color:var(--ink2)}
+.legend s{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;text-decoration:none;vertical-align:-1px}
+.legend em{font-style:normal;font-variant-numeric:tabular-nums;color:var(--ink)}
+
+.anchors{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.anchors button{font-size:11.5px;padding:6px 13px;border-radius:999px;background:#F3F1EC;color:var(--ink2);transition:background .14s,color .14s}
+.anchors button:hover{background:#EAE8E1;color:var(--ink)}
+
+/* ---------- 胶囊筛选 ---------- */
+.pills{display:inline-flex;gap:3px;background:#F3F1EC;padding:3px;border-radius:9px}
+.pills button{font-size:11.5px;padding:5px 13px;border-radius:7px;color:var(--ink2);transition:background .15s,color .15s}
+.pills button:hover{color:var(--ink)}
+.pills button.on{background:#fff;color:var(--ink);font-weight:500;box-shadow:0 1px 3px rgba(43,42,38,.1)}
+
+/* ---------- 逐段列表 ---------- */
+.rows{margin-top:2px}
+.seg{display:flex;gap:13px;padding:11px 10px;border-radius:10px;cursor:pointer;transition:background .13s;margin:0 -10px;align-items:flex-start}
+.seg:hover{background:#F2F5F8}
+.seg:active{background:#E9F0F6}
+.seg+.seg{border-top:1px solid var(--line)}
+.seg .tm{flex:0 0 96px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:10.5px;color:var(--blue);padding-top:3px;font-variant-numeric:tabular-nums;line-height:1.6}
+.seg .bd{flex:1;min-width:0}
+.seg .tp{font-size:13px;font-weight:500;line-height:1.55}
+.seg .nt{font-size:11.5px;color:var(--ink2);margin-top:4px;line-height:1.6}
+.tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:6px;margin-left:7px;vertical-align:1.5px;font-weight:500}
+.stars{color:var(--blue);font-size:10px;letter-spacing:.5px;margin-left:7px}
+
+/* ---------- 精华路线 ---------- */
+.pl div{display:flex;gap:13px;padding:10px 10px;border-radius:10px;cursor:pointer;transition:background .13s;margin:0 -10px;align-items:baseline}
+.pl div:hover{background:#F2F5F8}
+.pl div+div{border-top:1px solid var(--line)}
+.pl .tm{flex:0 0 52px;font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--blue)}
+.pl .lb{flex:1;font-size:12.5px;line-height:1.55}
+.pl .cu{font-size:10.5px;color:var(--ink3);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---------- 前置知识 ---------- */
+.pq{padding:10px 0}
+.pq+.pq{border-top:1px solid var(--line)}
+.pq b{font-size:12.5px;font-weight:500}
+.pq .d{font-size:11.5px;color:var(--ink2);margin-top:4px}
+.ref{display:inline-block;font-size:10px;padding:2px 8px;border-radius:6px;background:var(--gray-l);color:var(--ink2);margin-left:8px;vertical-align:1.5px}
+
+/* ---------- 历史 ---------- */
+.hist{display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:10px;margin:0 -10px;transition:background .13s}
+.hist:hover{background:#F2F5F8}
+.hist+.hist{border-top:1px solid var(--line)}
+.hist .bd{flex:1;min-width:0}
+.hist .tp{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hist .mt{font-size:10.5px;color:var(--ink3);margin-top:3px;font-family:ui-monospace,Consolas,monospace}
+.hist .ac{display:flex;gap:6px;flex:0 0 auto}
+.cur{display:inline-block;font-size:10px;padding:2px 8px;border-radius:6px;background:var(--blue-l);color:var(--blue);margin-left:7px}
+.cur.g{background:var(--green-l);color:var(--green)}
+
+/* ---------- 日志 ---------- */
+.lgrow{display:flex;gap:11px;padding:9px 10px;border-radius:8px;margin:0 -10px;font-size:11.5px;line-height:1.65;align-items:flex-start}
+.lgrow:hover{background:#F6F5F2}
+.lgrow+.lgrow{border-top:1px solid var(--line)}
+.lgrow .ts{flex:0 0 64px;font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--ink3);padding-top:2px}
+.lgrow .lv{flex:0 0 44px;font-size:10px;font-weight:600;padding-top:2px}
+.lgrow .ms{flex:1;word-break:break-word;white-space:pre-wrap}
+.lgrow.error{background:#FDF4F2}
+.lgrow.error .ms{color:var(--red)}
+.lgrow.warn .ms{color:var(--amber)}
+.lv.info{color:var(--ink3)}
+.lv.warn{color:var(--amber)}
+.lv.error{color:var(--red)}
+
+/* ---------- 设置 ---------- */
+label{display:block;font-size:11px;color:var(--ink2);margin:13px 0 5px}
+input{width:100%;font:inherit;font-size:12.5px;padding:8px 11px;border:1px solid var(--line2);border-radius:9px;background:#FDFDFC;color:var(--ink);transition:border-color .15s,background .15s,box-shadow .15s}
+input:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(31,111,178,.1)}
+textarea{width:100%;font-family:ui-monospace,Consolas,monospace;font-size:11.5px;padding:9px 11px;border:1px solid var(--line2);border-radius:9px;background:#FDFDFC;color:var(--ink);min-height:104px;resize:vertical;line-height:1.6}
+textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.foot{text-align:center;font-size:10.5px;color:var(--ink3);padding:6px 18px 18px;line-height:1.7}
+.foot b{color:var(--ink2);font-weight:500}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="hrow">
+    <div class="l">
+      <div class="t" id="vtitle">检测中…</div>
+      <div class="m" id="vsub"></div>
+    </div>
+    <div class="acts">
+      <button class="btn pri" id="go">分析</button>
+      <button class="btn" id="reload">刷新</button>
+    </div>
+  </div>
+  <div class="status" id="status"></div>
+</div>
+
+<div class="tabs" id="tabs">
+  <button data-tab="overview" class="on">概览</button>
+  <button data-tab="hist">历史</button>
+  <button data-tab="set">设置</button>
+  <button data-tab="log">日志<span class="doterr" id="logDot"></span></button>
+</div>
+
+<!-- 概览 -->
+<div class="panel on" id="p-overview">
+  <div id="overview"><div class="empty">还没看过这节课。<br>点「分析」，我帮你拆一拆：哪段值得细看、哪段倍速就行、哪段可以直接跳。</div></div>
+
+  <div class="card" id="cardRoute" style="display:none">
+    <h2>精华路线 <span class="c">时间不够就按这个顺序看</span>
+      <span class="r"><button class="btn sm" data-anchor="cardSeg">看逐段</button></span></h2>
+    <div class="pl" id="playlist"></div>
+  </div>
+
+  <div class="card" id="cardPrereq" style="display:none">
+    <h2>前置知识 <span class="c">缺了这些，有些精看段会接不上</span></h2>
+    <div id="prereq"></div>
+  </div>
+
+  <div class="card" id="cardSeg" style="display:none">
+    <h2>逐段判定 <span class="c" id="segCount"></span>
+      <span class="r"><span class="pills" id="pills"></span></span></h2>
+    <div class="rows" id="rows"></div>
+  </div>
+</div>
+
+<!-- 历史 -->
+<div class="panel" id="p-hist">
+  <div class="card">
+    <h2>历史记录 <span class="c">存在本机，重启浏览器也不会丢</span>
+      <span class="r"><button class="btn sm danger" id="clearHist">清空</button></span></h2>
+    <div class="hint" style="margin-bottom:10px">
+      每节课按 <b>BV号 + 分P</b> 存。下次打开同一节课，上次的报告会自动调出来。
+    </div>
+    <div id="hist"><div class="empty">还没有记录。<br>分析过的课都会自动存在这里。</div></div>
+  </div>
+</div>
+
+<!-- 设置 -->
+<div class="panel" id="p-set">
+  <div class="card">
+    <h2>大模型设置 <span class="c">留空 Key 就走手动模式</span></h2>
+    <label>Base URL</label>
+    <input id="llm_base" placeholder="https://api.deepseek.com/v1">
+    <div class="grid2">
+      <div><label>模型名</label><input id="llm_model" placeholder="deepseek-chat"></div>
+      <div><label>API Key</label><input id="llm_key" type="password" placeholder="sk-..."></div>
+    </div>
+    <div style="margin-top:16px;display:flex;align-items:center;gap:10px">
+      <button class="btn pri" id="saveCfg">保存设置</button>
+      <span class="hint" id="cfgMsg"></span>
+    </div>
+    <div class="hint" style="margin-top:14px">
+      Key 只保存在你自己的浏览器里，不会上传。
+      预设已覆盖 DeepSeek、OpenAI、Moonshot、通义、硅基流动、智谱、火山、OpenRouter；用其他服务商时，保存会弹一次授权。
+    </div>
+  </div>
+  <div class="card" id="manualCard" style="display:none">
+    <h2>手动模式 <span class="c">没配 Key 时用这个</span></h2>
+    <div class="hint">复制提示词，交给任意 AI（WorkBuddy / ChatGPT / Kimi 都行），把它返回的 JSON 粘回第二个框。</div>
+    <label style="display:flex;justify-content:space-between;align-items:center">提示词
+      <button class="btn sm" id="copyPrompt">复制</button></label>
+    <textarea id="prompt" readonly></textarea>
+    <label>AI 返回的 JSON</label>
+    <textarea id="paste" placeholder='{"verdict":{...},"segments":[...]}'></textarea>
+    <div style="margin-top:12px"><button class="btn pri" id="submitJson">生成报告</button></div>
+  </div>
+</div>
+
+<!-- 日志 -->
+<div class="panel" id="p-log">
+  <div class="card">
+    <h2>运行日志 <span class="c">报错都在这里，保留最近 300 条</span>
+      <span class="r">
+        <button class="btn sm" id="copyLog">复制全部</button>
+        <button class="btn sm danger" id="clearLog">清空</button>
+      </span></h2>
+    <div id="logs"><div class="empty">还没有日志。</div></div>
+  </div>
+</div>
+
+<div class="foot"><b>BiliTriage</b> · 由 AI 初判，可能有误判，重要的段落建议你试看一眼再决定</div>
+
+<script src="popup.js"></script>
+</body>
+</html>

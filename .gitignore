@@ -1,0 +1,27 @@
+# 本地配置与凭据 —— 绝不入库
+config.json
+*.local.json
+.env
+.env.*
+
+# 大文件与产物（模型、音频、转写稿都不进仓库）
+models/
+*.bin
+*.m4s
+*.mp3
+*.srt
+out/
+
+# 日志
+*.log
+
+# 依赖与构建
+node_modules/
+dist/
+build/
+*.zip
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
