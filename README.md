@@ -26,6 +26,13 @@
 
 ## 安装（30 秒）
 
+**方式一：下载 zip（推荐给不想折腾的人）**
+
+去 [**Releases**](https://github.com/viphzz/BiliTriage/releases) 下载最新版 `BiliTriage-v*.zip`，
+解压到一个**路径不含中文**的目录，然后按下面的方式二加载。
+
+**方式二：从源码加载**
+
 1. 打开 `chrome://extensions/`（Edge 是 `edge://extensions/`）
 2. 右上角打开 **开发者模式**
 3. 点 **加载已解压的扩展程序**，选择本仓库目录
@@ -135,12 +142,28 @@ manifest.json    MV3 清单
 background.js    service worker：页面主世界代发请求 + 跑大模型长任务
 content.js       页面内入口按钮 + 播放器跳转
 content.css      入口按钮 / 提示条样式
-popup.html       弹窗 UI
+popup.html       弹窗 UI（概览 / 历史 / 设置 / 日志 / 关于我们）
 popup.js         全部逻辑：取字幕 → 切片 → 提示词 → 提交后台 → 渲染
-docs/            界面截图
+docs/            界面截图 + 联系方式二维码
 ```
 
+## 联系与赞赏
+
+这个扩展是我自己上网课时做的工具，判断逻辑一直在调。
+如果它帮你省下过时间，或者你发现某节课判得不对，都欢迎直接找我。
+
+| 加我个人微信 | 赞赏支持 |
+|:---:|:---:|
+| <img src="docs/wechat-qr.jpg" width="230" alt="个人微信二维码"> | <img src="docs/reward-qr.jpg" width="230" alt="赞赏码"> |
+| 判断有误、想加功能、装不上，直接找我 | 如果它帮你省下过时间，欢迎请我喝一杯 |
+
+也可以在 [GitHub Issues](https://github.com/viphzz/BiliTriage/issues) 提，我会看。
+扩展里的「**关于我们**」标签页也有这两个码，不用回这里找。
+
 ## 更新日志
+
+**v0.6.0** 新增「关于我们」标签页（联系方式、赞赏码、项目链接，以及一段关于误判的说明）；
+README 补充下载方式与联系方式二维码。
 
 **v0.5.1** 界面去 AI 味 + 文案人性化：标签栏改为下划线式、卡片弱化边框、数字改分隔线排、
 时间轴悬停高亮当前段；进度与结果文案从机器腔改为自然语句。

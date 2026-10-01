@@ -573,6 +573,15 @@ async function jump(t) {
 document.addEventListener("click", (e) => {
   const tb = e.target.closest("#tabs button");
   if (tb) { showTab(tb.dataset.tab); return; }
+  // 关于我们里的外链：扩展弹窗里直接跳转会把弹窗顶掉，必须新开标签
+  const eu = e.target.closest("[data-ext-url]");
+  if (eu) {
+    e.preventDefault();
+    const url = eu.dataset.extUrl;
+    if (IS_EXT) chrome.tabs.create({ url });
+    else window.open(url, "_blank");
+    return;
+  }
   const an = e.target.closest("[data-anchor]");
   if (an) {
     const el = $(an.dataset.anchor);

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "BiliTriage · 网课值不值得学",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "在 B 站视频页一键判断这节课值不值得认真看：哪段精看、哪段倍速、哪段直接跳过，点一下即在播放器内跳转。",
   "permissions": ["storage", "scripting", "tabs", "activeTab"],
   "host_permissions": [

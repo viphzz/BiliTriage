@@ -167,6 +167,21 @@ textarea{width:100%;font-family:ui-monospace,Consolas,monospace;font-size:11.5px
 textarea:focus{outline:none;border-color:var(--blue);background:#fff}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
+/* ---------- 关于我们 ---------- */
+.lead{font-size:12.5px;color:var(--ink2);line-height:1.85}
+.lead b{color:var(--ink);font-weight:600}
+.qrs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.qr{text-align:center}
+.qr img{width:100%;max-width:196px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:#fff;display:block;margin:0 auto}
+.qr .ql{font-size:12.5px;font-weight:500;margin-top:11px}
+.qr .qh{font-size:11px;color:var(--ink3);margin-top:4px;line-height:1.65}
+.links{display:flex;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap;align-items:center}
+.sig{display:flex;align-items:center;gap:11px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.sig .av{width:36px;height:36px;border-radius:50%;background:var(--blue-l);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;flex:0 0 auto}
+.sig .bd{font-size:12px;line-height:1.65}
+.sig .bd b{font-weight:600}
+.sig .bd span{display:block;color:var(--ink3);font-size:11px;margin-top:2px}
+
 .foot{text-align:center;font-size:10.5px;color:var(--ink3);padding:6px 18px 18px;line-height:1.7}
 .foot b{color:var(--ink2);font-weight:500}
 </style>
@@ -192,6 +207,7 @@ textarea:focus{outline:none;border-color:var(--blue);background:#fff}
   <button data-tab="hist">历史</button>
   <button data-tab="set">设置</button>
   <button data-tab="log">日志<span class="doterr" id="logDot"></span></button>
+  <button data-tab="about">关于我们</button>
 </div>
 
 <!-- 概览 -->
@@ -268,6 +284,55 @@ textarea:focus{outline:none;border-color:var(--blue);background:#fff}
         <button class="btn sm danger" id="clearLog">清空</button>
       </span></h2>
     <div id="logs"><div class="empty">还没有日志。</div></div>
+  </div>
+</div>
+
+<!-- 关于我们 -->
+<div class="panel" id="p-about">
+  <div class="card">
+    <h2>关于我们 <span class="c">BiliTriage</span></h2>
+    <div class="lead">
+      BiliTriage 只做一件事：在你花时间之前，先告诉你<b>这节值不值得花</b>。<br>
+      它不生成笔记，所以不会为了「内容完整」把无聊的部分也留下来 ——
+      它敢说「这 12 分钟你可以直接跳过」。
+    </div>
+
+    <div class="qrs">
+      <div class="qr">
+        <img src="docs/wechat-qr.jpg" alt="个人微信二维码">
+        <div class="ql">加我个人微信</div>
+        <div class="qh">判断有误、想加功能、装不上，直接找我</div>
+      </div>
+      <div class="qr">
+        <img src="docs/reward-qr.jpg" alt="赞赏码">
+        <div class="ql">赞赏支持</div>
+        <div class="qh">如果它帮你省下过时间，欢迎请我喝一杯</div>
+      </div>
+    </div>
+
+    <div class="links">
+      <button class="btn sm" data-ext-url="https://github.com/viphzz/BiliTriage">GitHub 仓库</button>
+      <button class="btn sm" data-ext-url="https://github.com/viphzz/BiliTriage/issues">反馈问题</button>
+      <button class="btn sm" data-ext-url="https://github.com/viphzz/BiliTriage/releases">下载新版本</button>
+    </div>
+
+    <div class="sig">
+      <div class="av">岩</div>
+      <div class="bd">
+        <b>岩大魔</b>
+        <span>独立开发者 · 本项目以 MIT 协议开源</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>关于判断的说明 <span class="c">请务必看一眼</span></h2>
+    <div class="hint">
+      · 判定由大模型初筛，<b>会有误判</b>，特别是「藏在答疑和闲聊里的高价值段」。<br>
+      · 没有做画面识别，所以「这段在敲什么」是从讲解推断出来的，代码和板书以你自己看到的为准。<br>
+      · B 站官方字幕本身也是机器生成的，会有错别字，<b>抄代码别抄字幕</b>。<br>
+      · 最终要不要看，永远以你试看的那 30 秒为准。
+    </div>
   </div>
 </div>
 
